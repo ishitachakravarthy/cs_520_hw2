@@ -20,7 +20,14 @@ public class ExpenseTrackerModel {
   }
 
   public List<Transaction> getTransactions() {
-    return transactions;
+    List<Transaction> transactionsCopy=new  ArrayList<>();
+    for(Transaction t: transactions){
+      double amount=t.getAmount();
+      String category=t.getCategory();
+      Transaction tCopy= new Transaction(amount, category);
+      transactionsCopy.add(tCopy);
+    }
+    return transactionsCopy;
   }
 
 }
