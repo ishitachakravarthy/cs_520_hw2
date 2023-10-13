@@ -3,6 +3,8 @@ package controller;
 import java.util.Arrays;
 
 public class InputValidation {
+  public static final String[] VALIDWORDS = {"food", "travel", "bills", "entertainment", "other"};
+
 
   public static boolean isValidAmount(double amount) {
     
@@ -33,9 +35,8 @@ public class InputValidation {
       return false;
     }
 
-    String[] validWords = {"food", "travel", "bills", "entertainment", "other"};
 
-    if(!Arrays.asList(validWords).contains(category.toLowerCase())) {
+    if(!Arrays.asList(VALIDWORDS).contains(category.toLowerCase())) {
       // invalid word  
       return false;
     }

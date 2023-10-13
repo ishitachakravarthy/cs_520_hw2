@@ -21,7 +21,7 @@ public class ExpenseTrackerView extends JFrame {
   private DefaultTableModel model;
 
   private JFormattedTextField amountFilterField;
-  private JTextField categoryFilterField;
+  private JComboBox<String> categoryFilterField ;
   private JButton filterTransactionBtn;
 
   public ExpenseTrackerView() {
@@ -29,6 +29,7 @@ public class ExpenseTrackerView extends JFrame {
     setSize(600, 400); // Make GUI larger
 
     String[] columnNames = {"serial", "Amount", "Category", "Date"};
+
     this.model = new DefaultTableModel(columnNames, 0);
 
     addTransactionBtn = new JButton("Add Transaction");
@@ -40,7 +41,6 @@ public class ExpenseTrackerView extends JFrame {
     amountField = new JFormattedTextField(format);
     amountField.setColumns(10);
 
-    
     JLabel categoryLabel = new JLabel("Category:");
     categoryField = new JTextField(10);
 
@@ -54,7 +54,7 @@ public class ExpenseTrackerView extends JFrame {
     amountFilterField.setColumns(10);
 
     JLabel categoryFilterLabel = new JLabel("CategoryFilter:");
-    categoryFilterField = new JTextField(10);
+    categoryFilterField =  new JComboBox<>(InputValidation.VALIDWORDS);
 
     filterTransactionBtn = new JButton("Filter Transaction");
 
