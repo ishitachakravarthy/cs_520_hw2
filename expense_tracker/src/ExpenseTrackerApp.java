@@ -1,5 +1,3 @@
-import java.util.List;
-
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -34,16 +32,6 @@ public class ExpenseTrackerApp {
         JOptionPane.showMessageDialog(view, "Invalid amount or category entered");
         view.toFront();
       }
-    });
-     view.getFilterTransactionBtn().addActionListener(e -> {
-      
-      // Call controller to add transaction
-       List<Transaction> added = controller.applyFilter();
-      
-      // if (!added) {
-      //   JOptionPane.showMessageDialog(view, "Invalid amount or category entered");
-      //   view.toFront();
-      // }
     });
 
   }
