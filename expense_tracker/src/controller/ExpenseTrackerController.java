@@ -5,8 +5,11 @@ import view.ExpenseTrackerView;
 import java.util.LinkedList;
 import java.util.List;
 
+import model.AmountFilter;
+import model.CategoryFilter;
 import model.ExpenseTrackerModel;
 import model.Transaction;
+import model.TransactionFilter;
 
 public class ExpenseTrackerController {
 
@@ -46,4 +49,12 @@ public class ExpenseTrackerController {
   }
 
   // Other controller methods
+  public List<Transaction> applyFilter() {
+    List<Transaction> transactions = model.getTransactions();
+    AmountFilter amountFilter = new AmountFilter(view.getAmountFilterField());
+    CategoryFilter categoryFilter = new CategoryFilter(view.getCategoryFilterField());
+    List<Transaction> results = new LinkedList<>();
+    results = categoryFilter.filter(amountFilter.filter(transactions));
+    return results;
+  }
 }
