@@ -2,14 +2,14 @@ package controller;
 
 import view.ExpenseTrackerView;
 
+import java.util.LinkedList;
 import java.util.List;
-
-
 
 import model.ExpenseTrackerModel;
 import model.Transaction;
+
 public class ExpenseTrackerController {
-  
+
   private ExpenseTrackerModel model;
   private ExpenseTrackerView view;
 
@@ -37,13 +37,13 @@ public class ExpenseTrackerController {
     if (!InputValidation.isValidCategory(category)) {
       return false;
     }
-    
+
     Transaction t = new Transaction(amount, category);
     model.addTransaction(t);
-    view.getTableModel().addRow(new Object[]{t.getAmount(), t.getCategory(), t.getTimestamp()});
+    view.getTableModel().addRow(new Object[] { t.getAmount(), t.getCategory(), t.getTimestamp() });
     refresh();
     return true;
   }
-  
+
   // Other controller methods
 }

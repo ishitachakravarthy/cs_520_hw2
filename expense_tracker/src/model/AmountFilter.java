@@ -21,6 +21,7 @@ public class AmountFilter implements TransactionFilter {
         }
 
     }
+
     /**
      * This method filters a list of transactions with respect to the amount.
      * 
@@ -29,7 +30,7 @@ public class AmountFilter implements TransactionFilter {
         List<Transaction> results = new LinkedList<>();
         for (int i = 0; i < list.size(); i++) {
             Transaction t = list.get(i);
-            boolean isCorrectAmount = (amount==t.getAmount());
+            boolean isCorrectAmount = (amount == t.getAmount());
             if (isCorrectAmount) {
                 results.add(t);
             }
