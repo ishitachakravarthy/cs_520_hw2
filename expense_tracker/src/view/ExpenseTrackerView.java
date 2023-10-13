@@ -2,6 +2,7 @@ package view;
 
 import javax.swing.*;
 import javax.swing.JFormattedTextField.AbstractFormatterFactory;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import controller.InputValidation;
@@ -116,8 +117,30 @@ public class ExpenseTrackerView extends JFrame {
 
   }
 
+  public void colorTableRows(List<Integer> indices, Color color) {
+    transactionsTable.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+      @Override
+      public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
+          int row, int column) {
+        final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+        for (int i : indices) {
+          System.out.println(String.valueOf(i) + ", " + String.valueOf(row) + ", " + (i == row));
+          Color rowColor = i == row ? color : Color.WHITE;
+          if (i == row) {
+            c.setBackground(rowColor);
+          }
+        }
+        return c;
+      }
+    });
+  }
+
   public JButton getAddTransactionBtn() {
     return addTransactionBtn;
+  }
+
+  public JButton getFilterTransactionBtn() {
+    return filterTransactionBtn;
   }
 
   public DefaultTableModel getTableModel() {
