@@ -19,7 +19,10 @@ public class ExpenseTrackerView extends JFrame {
   private JFormattedTextField amountField;
   private JTextField categoryField;
   private DefaultTableModel model;
-  
+
+  private JFormattedTextField amountFilterField;
+  private JTextField categoryFilterField;
+  private JButton filterTransactionBtn;
 
   public ExpenseTrackerView() {
     setTitle("Expense Tracker"); // Set title
@@ -44,6 +47,26 @@ public class ExpenseTrackerView extends JFrame {
     // Create table
     transactionsTable = new JTable(model);
   
+
+    // Text Fields and Label  panel for Amount and Category:
+    JLabel amountFilterLabel = new JLabel("AmountFilter:");
+    amountFilterField = new JFormattedTextField(format);
+    amountFilterField.setColumns(10);
+
+    JLabel categoryFilterLabel = new JLabel("CategoryFilter:");
+    categoryFilterField = new JTextField(10);
+
+    filterTransactionBtn = new JButton("Filter Transaction");
+
+
+    // Panel for new filter fields
+    JPanel inputPanelFilter = new JPanel();
+    inputPanelFilter.add(amountFilterLabel);
+    inputPanelFilter.add(amountFilterField);
+    inputPanelFilter.add(categoryFilterLabel);
+    inputPanelFilter.add(categoryFilterField);
+    inputPanelFilter.add(filterTransactionBtn);
+
     // Layout components
     JPanel inputPanel = new JPanel();
     inputPanel.add(amountLabel);
@@ -51,6 +74,10 @@ public class ExpenseTrackerView extends JFrame {
     inputPanel.add(categoryLabel); 
     inputPanel.add(categoryField);
     inputPanel.add(addTransactionBtn);
+
+    // Add in new Filter Panel to existing panel
+    inputPanel.add(inputPanelFilter);
+
   
     JPanel buttonPanel = new JPanel();
     buttonPanel.add(addTransactionBtn);
@@ -61,7 +88,7 @@ public class ExpenseTrackerView extends JFrame {
     add(buttonPanel, BorderLayout.SOUTH);
   
     // Set frame properties
-    setSize(400, 300);
+    setSize(1200, 300);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setVisible(true);
   
