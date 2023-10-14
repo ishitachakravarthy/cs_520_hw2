@@ -117,18 +117,24 @@ public class ExpenseTrackerView extends JFrame {
 
   }
 
+  /**
+   * This method takes a list of indices and colors the respective rows in the
+   * provided color.
+   */
   public void colorTableRows(List<Integer> indices, Color color) {
     transactionsTable.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
       @Override
       public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
           int row, int column) {
         final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-        for (int i : indices) {
-          System.out.println(String.valueOf(i) + ", " + String.valueOf(row) + ", " + (i == row));
-          Color rowColor = i == row ? color : Color.WHITE;
-          if (i == row) {
-            c.setBackground(rowColor);
-          }
+        if (isSelected) {
+          // If row is selected, get default color for this action
+          Color defaultSelected = javax.swing.UIManager.getDefaults().getColor("Table.selectionBackground");
+          c.setBackground(defaultSelected);
+        } else if (indices.stream().anyMatch(i -> i == row)) {
+          c.setBackground(color);
+        } else {
+          c.setBackground(Color.WHITE);
         }
         return c;
       }
@@ -177,7 +183,7 @@ public class ExpenseTrackerView extends JFrame {
     if (amountFilterField.getText().isEmpty()) {
       return 0;
     } else {
-      double amount = Double.parseDouble(amountField.getText());
+      double amount = Double.parseDouble(amountFilterField.getText());
       return amount;
     }
   }
