@@ -189,6 +189,6 @@ public class ExpenseTrackerView extends JFrame {
   }
 
   public String getCategoryFilterField() {
-    return categoryFilterField.getSelectedItem().toString();
+    return (String)categoryFilterField.getSelectedItem();
   }
 }

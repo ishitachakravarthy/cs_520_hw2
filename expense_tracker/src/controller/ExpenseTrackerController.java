@@ -10,6 +10,7 @@ import model.CategoryFilter;
 import model.ExpenseTrackerModel;
 import model.Transaction;
 import model.TransactionFilter;
+import javax.swing.JOptionPane;
 
 public class ExpenseTrackerController {
 
@@ -50,11 +51,22 @@ public class ExpenseTrackerController {
 
   // Other controller methods
   public List<Transaction> applyFilter() {
+    // TODO: New instance of transactions created here
     List<Transaction> transactions = model.getTransactions();
-    AmountFilter amountFilter = new AmountFilter(view.getAmountFilterField());
-    CategoryFilter categoryFilter = new CategoryFilter(view.getCategoryFilterField());
-    List<Transaction> results = new LinkedList<>();
-    results = categoryFilter.filter(amountFilter.filter(transactions));
-    return results;
+    String output = "";
+    try {
+      AmountFilter amountFilter = new AmountFilter(view.getAmountFilterField());
+      transactions = amountFilter.filter(transactions);
+      output = output + "Amount ";
+    } catch (IllegalArgumentException ex) {
+    }
+    try {
+      CategoryFilter categoryFilter = new CategoryFilter(view.getCategoryFilterField());
+      transactions = categoryFilter.filter(transactions);
+      output = output + "Category ";
+    } catch (IllegalArgumentException ex) {
+    }
+    JOptionPane.showMessageDialog(view, output + "filtered");
+    return transactions;
   }
 }
