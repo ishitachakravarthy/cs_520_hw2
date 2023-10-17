@@ -55,7 +55,7 @@ public class ExpenseTrackerController {
     Double amountFilterInput = view.getAmountFilterField();
     String categoryFilterInput = view.getCategoryFilterField();
     try {
-      if (amountFilterInput != null) {
+      if (amountFilterInput != 0) {
         AmountFilter amountFilter = new AmountFilter(amountFilterInput);
         transactions = amountFilter.filter(transactions);
       }
