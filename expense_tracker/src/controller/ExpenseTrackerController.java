@@ -56,11 +56,11 @@ public class ExpenseTrackerController {
     String categoryFilterInput = view.getCategoryFilterField();
     try {
       if (amountFilterInput != null) {
-        AmountFilter amountFilter = new AmountFilter(view.getAmountFilterField());
+        AmountFilter amountFilter = new AmountFilter(amountFilterInput);
         transactions = amountFilter.filter(transactions);
       }
       if (categoryFilterInput != null) {
-        CategoryFilter categoryFilter = new CategoryFilter(view.getCategoryFilterField());
+        CategoryFilter categoryFilter = new CategoryFilter(categoryFilterInput);
         transactions = categoryFilter.filter(transactions);
       }
     } catch (IllegalArgumentException ex) {

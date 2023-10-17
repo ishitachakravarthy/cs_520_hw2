@@ -56,7 +56,7 @@ public class ExpenseTrackerView extends JFrame {
     JLabel categoryFilterLabel = new JLabel("CategoryFilter:");
     categoryFilterField = new JComboBox<>(InputValidation.VALIDWORDS);
     categoryFilterField.setSelectedIndex(-1);
-    categoryFilterField.insertItemAt("", 0);
+    categoryFilterField.insertItemAt(null, 0);
 
     filterTransactionBtn = new JButton("Filter Transaction");
 
@@ -162,7 +162,8 @@ public class ExpenseTrackerView extends JFrame {
     if (amountField.getText().isEmpty()) {
       return 0;
     } else {
-      double amount = Double.parseDouble(amountField.getText());
+      double amount = (long)amountField.getValue();
+      amountField.setValue(null);
       return amount;
     }
   }
@@ -172,7 +173,9 @@ public class ExpenseTrackerView extends JFrame {
   }
 
   public String getCategoryField() {
-    return categoryField.getText();
+    String category=categoryField.getText();
+    categoryField.setText("");
+    return category;
   }
 
   public void setCategoryField(JTextField categoryField) {
@@ -183,12 +186,15 @@ public class ExpenseTrackerView extends JFrame {
     if (amountFilterField.getText().isEmpty()) {
       return 0;
     } else {
-      double amount = Double.parseDouble(amountFilterField.getText());
+      double amount = (long)amountFilterField.getValue();
+      amountFilterField.setValue(null);
       return amount;
     }
   }
 
   public String getCategoryFilterField() {
-    return (String)categoryFilterField.getSelectedItem();
+    String category=(String)categoryFilterField.getSelectedItem();
+    categoryFilterField.setSelectedIndex(0);    
+    return category;
   }
 }
