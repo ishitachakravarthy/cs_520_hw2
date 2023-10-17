@@ -158,9 +158,9 @@ public class ExpenseTrackerView extends JFrame {
     return transactionsTable;
   }
 
-  public double getAmountField() {
+  public Double getAmountField() {
     if (amountField.getText().isEmpty()) {
-      return 0;
+      return null;
     } else {
       double amount = (long)amountField.getValue();
       amountField.setValue(null);
@@ -182,9 +182,9 @@ public class ExpenseTrackerView extends JFrame {
     this.categoryField = categoryField;
   }
 
-  public double getAmountFilterField() {
+  public Double getAmountFilterField() {
     if (amountFilterField.getText().isEmpty()) {
-      return 0;
+      return null;
     } else {
       double amount = (long)amountFilterField.getValue();
       amountFilterField.setValue(null);
