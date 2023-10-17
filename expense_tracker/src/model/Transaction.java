@@ -16,6 +16,13 @@ public class Transaction {
     this.timestamp = generateTimestamp();
   }
 
+  // Protected constructor for copying transaction
+  protected Transaction(double amount, String category, String timestamp) {
+    this.amount = amount;
+    this.category = category;
+    this.timestamp = timestamp;
+  }
+
   public double getAmount() {
     return amount;
   }
@@ -37,11 +44,11 @@ public class Transaction {
   public boolean equals(Object other) {
     if (other == null)
       return false;
-    if (other.getClass() != this.getClass()) {
+    if (other.getClass() != this.getClass())
       return false;
-    }
     Transaction t = (Transaction) other;
-    return this.amount == t.getAmount() && this.category == t.getCategory()
-        && this.timestamp == t.getTimestamp();
+    return this.amount == t.getAmount() &&
+        this.category == t.getCategory() &&
+        this.timestamp == t.getTimestamp();
   }
 }

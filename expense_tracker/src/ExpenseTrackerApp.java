@@ -54,7 +54,6 @@ public class ExpenseTrackerApp {
       controller.refresh();
       // Get filtered transactions
       List<Transaction> filtered = controller.applyFilter();
-      System.out.println(filtered.size());
       // Get indices of filtered rows
       List<Integer> filteredIndices = new LinkedList<>();
       for (int i = 0; i < transactions.size(); i++) {
@@ -67,6 +66,7 @@ public class ExpenseTrackerApp {
           }
         }
       }
+      System.out.println(filteredIndices);
 
       // Overwrite renderer for row colors
       view.colorTableRows(filteredIndices, new Color(173, 255, 168));

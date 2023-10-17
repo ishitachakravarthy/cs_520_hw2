@@ -24,8 +24,8 @@ public class ExpenseTrackerModel {
     for (Transaction t : transactions) {
       double amount = t.getAmount();
       String category = t.getCategory();
-      Transaction tCopy = new Transaction(amount, category);
-      transactionsCopy.add(tCopy);
+      String timestamp = t.getTimestamp();
+      transactionsCopy.add(new Transaction(amount, category, timestamp));
     }
     return transactionsCopy;
   }
