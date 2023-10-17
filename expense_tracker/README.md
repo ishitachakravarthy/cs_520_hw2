@@ -2,6 +2,13 @@
 
 The homework will be based on this project named "Expense Tracker",where users will be able to add/remove daily transaction. 
 
+## New functionality
+As part of the homework, we implemented the following functionalities:
+
+- The getter method for the list of transactions now returns a deep copy of all transactions for immutability.
+- Filtering for amount and category was added. Rows that match the filter inputs are highlighted in green. Through extensive testing, all major exceptions have been identified and are being properly handled.
+
+
 ## Compile
 
 To compile the code from terminal, use the following command:
