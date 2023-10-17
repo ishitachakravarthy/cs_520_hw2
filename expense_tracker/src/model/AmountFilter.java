@@ -13,7 +13,7 @@ import controller.InputValidation;
 public class AmountFilter implements TransactionFilter {
     private double amount;
 
-    public AmountFilter(double amount) {
+    public AmountFilter(double amount) throws IllegalArgumentException {
         if (InputValidation.isValidAmount(amount)) {
             this.amount = amount;
         } else {

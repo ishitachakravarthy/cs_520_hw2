@@ -54,6 +54,7 @@ public class ExpenseTrackerApp {
       controller.refresh();
       // Get filtered transactions
       List<Transaction> filtered = controller.applyFilter();
+      System.out.println(filtered.size());
       // Get indices of filtered rows
       List<Integer> filteredIndices = new LinkedList<>();
       for (int i = 0; i < transactions.size(); i++) {
@@ -61,7 +62,7 @@ public class ExpenseTrackerApp {
         for (Transaction f : filtered) {
           // TODO: After we have fixed the creation of new Transaction instances:
           // change this comparison to t == f
-          if (t.getCategory().equals(f.getCategory()) & t.getAmount() == f.getAmount()) {
+          if (t.equals(f)) {
             filteredIndices.add(i);
           }
         }

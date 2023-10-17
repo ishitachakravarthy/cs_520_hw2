@@ -33,4 +33,15 @@ public class Transaction {
     return sdf.format(new Date());
   }
 
+  @Override
+  public boolean equals(Object other) {
+    if (other == null)
+      return false;
+    if (other.getClass() != this.getClass()) {
+      return false;
+    }
+    Transaction t = (Transaction) other;
+    return this.amount == t.getAmount() && this.category == t.getCategory()
+        && this.timestamp == t.getTimestamp();
+  }
 }

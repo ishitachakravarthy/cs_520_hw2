@@ -13,7 +13,7 @@ import controller.InputValidation;
 public class CategoryFilter implements TransactionFilter {
     private String category;
 
-    public CategoryFilter(String category) {
+    public CategoryFilter(String category) throws IllegalArgumentException {
         if (InputValidation.isValidCategory(category)) {
             this.category = category;
         } else {

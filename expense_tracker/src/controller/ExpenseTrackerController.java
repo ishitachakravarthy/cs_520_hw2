@@ -51,22 +51,22 @@ public class ExpenseTrackerController {
 
   // Other controller methods
   public List<Transaction> applyFilter() {
-    // TODO: New instance of transactions created here
     List<Transaction> transactions = model.getTransactions();
-    String output = "";
+    Double amountFilterInput = view.getAmountFilterField();
+    String categoryFilterInput = view.getCategoryFilterField();
     try {
-      AmountFilter amountFilter = new AmountFilter(view.getAmountFilterField());
-      transactions = amountFilter.filter(transactions);
-      output = output + "Amount ";
+      if (amountFilterInput != null) {
+        AmountFilter amountFilter = new AmountFilter(view.getAmountFilterField());
+        transactions = amountFilter.filter(transactions);
+      }
+      if (categoryFilterInput != null) {
+        CategoryFilter categoryFilter = new CategoryFilter(view.getCategoryFilterField());
+        transactions = categoryFilter.filter(transactions);
+      }
     } catch (IllegalArgumentException ex) {
+      JOptionPane.showMessageDialog(view, "Please check your filtering options.");
+      transactions = new LinkedList<Transaction>();
     }
-    try {
-      CategoryFilter categoryFilter = new CategoryFilter(view.getCategoryFilterField());
-      transactions = categoryFilter.filter(transactions);
-      output = output + "Category ";
-    } catch (IllegalArgumentException ex) {
-    }
-    JOptionPane.showMessageDialog(view, output + "filtered");
     return transactions;
   }
 }
