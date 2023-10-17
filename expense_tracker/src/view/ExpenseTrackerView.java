@@ -162,7 +162,7 @@ public class ExpenseTrackerView extends JFrame {
     if (amountField.getText().isEmpty()) {
       return null;
     } else {
-      double amount = (long)amountField.getValue();
+      double amount = (long) amountField.getValue();
       amountField.setValue(null);
       return amount;
     }
@@ -173,7 +173,7 @@ public class ExpenseTrackerView extends JFrame {
   }
 
   public String getCategoryField() {
-    String category=categoryField.getText();
+    String category = categoryField.getText();
     categoryField.setText("");
     return category;
   }
@@ -186,15 +186,17 @@ public class ExpenseTrackerView extends JFrame {
     if (amountFilterField.getText().isEmpty()) {
       return null;
     } else {
-      double amount = (long)amountFilterField.getValue();
+      double amount = (long) amountFilterField.getValue();
+      // Reset value of field so next entry can be set
       amountFilterField.setValue(null);
       return amount;
     }
   }
 
   public String getCategoryFilterField() {
-    String category=(String)categoryFilterField.getSelectedItem();
-    categoryFilterField.setSelectedIndex(0);    
+    String category = (String) categoryFilterField.getSelectedItem();
+    // Reset value of field so next entry can be set
+    categoryFilterField.setSelectedIndex(0);
     return category;
   }
 }

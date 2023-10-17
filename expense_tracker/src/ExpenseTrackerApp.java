@@ -59,26 +59,13 @@ public class ExpenseTrackerApp {
       for (int i = 0; i < transactions.size(); i++) {
         Transaction t = transactions.get(i);
         for (Transaction f : filtered) {
-          // TODO: After we have fixed the creation of new Transaction instances:
-          // change this comparison to t == f
           if (t.equals(f)) {
             filteredIndices.add(i);
           }
         }
       }
-      System.out.println(filteredIndices);
-
       // Overwrite renderer for row colors
       view.colorTableRows(filteredIndices, new Color(173, 255, 168));
     });
-
-    // Create test entries
-    // TODO: Remove this after testing is over!
-    double i = 0;
-    for (String label : InputValidation.VALIDWORDS) {
-      double amount = ++i;
-      String category = label;
-      controller.addTransaction(amount, category);
-    }
   }
 }
